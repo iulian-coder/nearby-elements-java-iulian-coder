@@ -1,12 +1,20 @@
 import java.util.Arrays;
 
+/**
+ * Find nearby elements in a multidimensional Array
+ *
+ * @author iulian-coder
+ * @version 1.0.5 April 10, 2020
+ *
+ */
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Start");
 
 //        int[] result = nearby(0, 2, 2); //OK
-//        int[] result = nearby(1, 0, 1); // OK
-        int[] result = nearby(1, 3, 5); //OK
+        int[] result = nearby(1, 0, 1); // OK
+//        int[] result = nearby(1, 3, 5); //OK
         System.out.println(Arrays.toString(result));
 
     }
@@ -22,7 +30,7 @@ public class Main {
         int[] arrayNearbyLeft;
         int[] arrayNearbyRight;
         int leftRange = y - range;
-        int rightRange = (y + 1) + range;
+        int rightRange = y + range-2;
 
         // y is the index of the array
 
@@ -33,6 +41,8 @@ public class Main {
         }
         if (rightRange > arrayTarget.length) {
             rightRange = 0;
+        } else if (rightRange < 0){
+            rightRange = y + 1;
         }
 
         try {
@@ -54,5 +64,6 @@ public class Main {
         System.arraycopy(arrayNearbyRight, 0, arrayNearby, arrayNearbyLeft.length, arrayNearbyRight.length);
 
         return arrayNearby;
+
     }
 }
